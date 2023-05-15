@@ -14,7 +14,7 @@ class NewUserCreateView(APIView):
                 serializer.save()
                 response = SuccessResponse(message="User data saved Successfully!", data=serializer.data)
                 return Response(response.to_json(), status=status.HTTP_201_CREATED)
-            response = ErrorResponse(message="User data saved Successfully!", errors=serializer.errors)
+            response = ErrorResponse(message="User data saved Unsuccessfully!", errors=serializer.errors)
             return Response(response.to_json(), status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             print(e)
@@ -30,7 +30,7 @@ class NewSuperUserCreateView(APIView):
                 serializer.save()
                 response = SuccessResponse(message="Super user data saved Successfully!", data=serializer.data)
                 return Response(response.to_json(), status=status.HTTP_201_CREATED)
-            response = ErrorResponse(message="Super user data saved Successfully!", errors=serializer.errors)
+            response = ErrorResponse(message="Super user data saved Unsuccessfully!", errors=serializer.errors)
             return Response(response.to_json(), status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             print(e)
